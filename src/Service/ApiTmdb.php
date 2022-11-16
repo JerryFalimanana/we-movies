@@ -42,7 +42,6 @@ class ApiTmdb
             [
                 'query' => [
                     'api_key' => $this->tmdbKey,
-                    'language' => 'fr-FR',
                 ],
             ]
         );
