@@ -18,7 +18,7 @@ class ApiTmdb
         $this->client = $client;
     }
 
-    public function getData(): array
+    public function getGenre(): array
     {
         $response = $this->client->request(
             'GET',
@@ -27,6 +27,37 @@ class ApiTmdb
                 'query' => [
                     'api_key' => $this->tmdbKey,
                     'language' => 'fr-FR',
+                ],
+            ]
+        );
+
+        return $response->toArray();
+    }
+
+    public function getTopRated(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->tmdbBaseUrl . '/movie/top_rated',
+            [
+                'query' => [
+                    'api_key' => $this->tmdbKey,
+                    'language' => 'fr-FR',
+                ],
+            ]
+        );
+
+        return $response->toArray();
+    }
+
+    public function getMovie(int $id)
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->tmdbBaseUrl . '//movie/' . $id . '/videos',
+            [
+                'query' => [
+                    'api_key' => $this->tmdbKey,
                 ],
             ]
         );
