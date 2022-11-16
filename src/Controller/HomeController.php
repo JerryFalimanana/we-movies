@@ -14,10 +14,10 @@ class HomeController extends AbstractController
      */
     public function index(ApiTmdb $apiTmdb): Response
     {
-        $data = $apiTmdb->getData();
+        $genre = $apiTmdb->getData()['genres'];
 
         return $this->render('home/index.html.twig', [
-            'data' => $data,
+            'data' => $genre,
         ]);
     }
 }

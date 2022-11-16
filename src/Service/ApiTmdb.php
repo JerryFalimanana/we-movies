@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Doctrine\DBAL\Types\JsonType;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class ApiTmdb
