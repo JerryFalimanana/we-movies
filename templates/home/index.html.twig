@@ -16,9 +16,13 @@
     </nav>
     <div class="container">
         <div class="row my-4">
-            <video class="mx-auto" height="300" width="650" controls>
-                <source src="{{ topRatedVideo }}" type="video/mp4">
-            </video>
+            {% if topRatedVideo.site is same as "YouTube" %}
+                <iframe class="mx-auto" width="650" height="300" src="{{ topRatedVideo.link }}" frameborder="0" allowfullscreen></iframe>
+            {% else %}
+                <video class="mx-auto" height="300" width="650" controls>
+                    <source src="http://www.youtube.com/embed/KFS4_qevE7M?rel=0" type="video/mp4">
+                </video>
+            {% endif %}
       </iframe>
         </div>
         <div class="row">
@@ -55,6 +59,9 @@
                             </div>
                         </div>
                     </div>
+                    <pre>
+                        {{ dump(movie) }}
+                    </pre>
                 {% endfor %}
             </div>
         </div>

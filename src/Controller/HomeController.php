@@ -17,12 +17,13 @@ class HomeController extends AbstractController
         $genre = $apiTmdb->getGenre()['genres'];
         $topRated = $apiTmdb->getTopRated()['results'];
         $topRatedVideo = $apiTmdb->getMovie($topRated[0]['id'])['results'][0];
-        $link = 'https://www.youtube.com/watch?v=' . $topRatedVideo['key'];
+        $video['site'] = $topRatedVideo['site'];
+        $video['link'] = 'https://www.youtube.com/embed/' . $topRatedVideo['key'];
 
         return $this->render('home/index.html.twig', [
             'genres' => $genre,
             'topMovies' => $topRated,
-            'topRatedVideo' => $link,
+            'topRatedVideo' => $video,
         ]);
     }
 }
